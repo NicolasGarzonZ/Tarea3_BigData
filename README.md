@@ -15,6 +15,8 @@ Este proyecto implementa una arquitectura de Big Data para el análisis de la Ta
 
 ### 1. Requisitos Previos
 * Iniciar el clúster de Hadoop y asegurar que el archivo de datos esté en HDFS:
+Inicia todos los servicios de almacenamiento y gestión:
+   `start-all.sh`
   `hdfs dfs -put rows.csv /Tarea3/rows.csv`
 * Iniciar Zookeeper y el servidor de Kafka en segundo plano:
   `sudo /opt/Kafka/bin/zookeeper-server-start.sh -daemon /opt/Kafka/config/zookeeper.properties`
@@ -25,4 +27,14 @@ Este proyecto implementa una arquitectura de Big Data para el análisis de la Ta
 ### 2. Ejecución del Procesamiento en Batch
 Ejecutar el script de análisis histórico, el cual imprimirá los esquemas, estadísticas descriptivas (summary) y las consultas ordenadas directamente en la consola:
 ```bash
-python3 batch_analysis.py
+ `python3 batch_analysis.py`
+
+## Instrucciones de Ejecución simulacion
+
+### 1. Ejecución Producer
+
+ `python3 kafka_producer.py`
+
+### 2. Ejecución Consumer
+
+`spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.3 spark_streaming_consumer.py`
