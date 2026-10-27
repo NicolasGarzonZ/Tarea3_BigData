@@ -33,8 +33,8 @@ Ejecutar el script de análisis histórico, el cual imprimirá los esquemas, est
 
 ### 1. Ejecución Producer
 
- `python3 kafka_producer.py`
+ `python3 kafka_producerc.py`
 
 ### 2. Ejecución Consumer
 
-`spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.3 spark_streaming_consumer.py`
+`spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.3 spark_streaming_consumerc.py`
