@@ -27,7 +27,7 @@ df_clean.printSchema()
 print("\n=== 2. MUESTRA DE REGISTROS CARGADOS ===")
 df_clean.show(10, truncate=False)
 
-# 4. Análisis Exploratorio de Datos (EDA)
+# 4. Análisis Exploratorio de Datos 
 print("\n=== 3. ESTADÍSTICAS DESCRIPTIVAS (SUMMARY) ===")
 # Calcula media, desviación estándar, mínimos y máximos de la TRM
 df_clean.summary().show()
