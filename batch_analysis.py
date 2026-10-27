@@ -11,7 +11,6 @@ spark = SparkSession.builder \
 spark.sparkContext.setLogLevel("WARN")
 
 # 2. Cargar conjunto de datos desde el clúster HDFS
-
 file_path = "hdfs://localhost:9000/Tarea3/rows.csv"
 df = spark.read.format("csv") \
     .option("header", "true") \
@@ -29,8 +28,8 @@ df_clean.show(10, truncate=False)
 
 # 4. Análisis Exploratorio de Datos 
 print("\n=== 3. ESTADÍSTICAS DESCRIPTIVAS (SUMMARY) ===")
-# Calcula media, desviación estándar, mínimos y máximos de la TRM
-df_clean.summary().show()
+# Selecciona únicamente la columna numérica "VALOR" para evitar métricas nulas en las fechas
+df_clean.select("VALOR").summary().show()
 
 print("\n=== 4. REGISTROS CON VALOR SUPERIOR A 5000 COP ===")
 # Filtra los días donde el dólar estuvo por encima de 5000 pesos
@@ -42,7 +41,6 @@ print("\n=== 5. MAYORES VALORES HISTÓRICOS REGISTRADOS ===")
 # Ordena descendentemente para ver los picos históricos más altos
 df_sorted = df_clean.sort(F.col("VALOR").desc())
 df_sorted.show(10)
-
 
 print("\nProcesamiento Batch finalizado con éxito.")
 print("Manteniendo puerto 4040 activo por 60 segundos...")
